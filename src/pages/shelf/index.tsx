@@ -1,3 +1,3 @@
-export function ShelfPage() {
+export const ShelfPage = () => {
   return <div>ShelfPage</div>;
-}
+};

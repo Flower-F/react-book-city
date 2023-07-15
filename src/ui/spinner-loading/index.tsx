@@ -10,7 +10,7 @@ export interface SpinnerLoadingProps {
 
 const classPrefix = 'ygm-spinner-loading';
 
-export function SpinnerLoading(props: SpinnerLoadingProps) {
+export const SpinnerLoading = (props: SpinnerLoadingProps) => {
   const { color = 'default', size = 42 } = props;
 
   return (
@@ -19,6 +19,6 @@ export function SpinnerLoading(props: SpinnerLoadingProps) {
       style={{ ...props.style, width: size, height: size }}
     ></div>
   );
-}
+};
 
 SpinnerLoading.displayName = 'SpinnerLoading';

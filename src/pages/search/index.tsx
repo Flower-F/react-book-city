@@ -1,3 +1,3 @@
-export function SearchPage() {
+export const SearchPage = () => {
   return <div>SearchPage</div>;
-}
+};

@@ -1,3 +1,3 @@
-export function CategoryPage() {
+export const CategoryPage = () => {
   return <div>Category</div>;
-}
+};

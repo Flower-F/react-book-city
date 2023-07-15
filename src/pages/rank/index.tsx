@@ -1,3 +1,3 @@
-export function RankPage() {
+export const RankPage = () => {
   return <div>RankPage</div>;
-}
+};

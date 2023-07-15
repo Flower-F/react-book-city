@@ -1,3 +1,3 @@
-export function DetailPage() {
+export const DetailPage = () => {
   return <div>DetailPage</div>;
-}
+};

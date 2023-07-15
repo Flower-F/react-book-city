@@ -1,3 +1,3 @@
-export function BookListPage() {
+export const BookListPage = () => {
   return <div>BookListPage</div>;
-}
+};

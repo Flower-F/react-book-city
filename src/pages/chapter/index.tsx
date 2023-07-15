@@ -1,3 +1,3 @@
-export function ChapterPage() {
+export const ChapterPage = () => {
   return <div>ChapterPage</div>;
-}
+};
