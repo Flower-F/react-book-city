@@ -22,7 +22,7 @@ export const HomePage = () => {
   return (
     <div className={styles.home}>
       <Header />
-      <Swiper loop style={{ '--border-radius': '12px' }}>
+      <Swiper loop autoplay style={{ '--border-radius': '12px' }}>
         {data.banner.map((item, index) => (
           <Swiper.Item key={index}>
             <img src={item.src} alt={item.alt} height='100%' width='100%' />

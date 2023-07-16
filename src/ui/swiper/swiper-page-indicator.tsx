@@ -19,10 +19,11 @@ export const SwiperPageIndicator = (props: SwiperPageIndicatorProps) => {
         key={index}
         className={cx(`${classPrefix}-dot`, {
           [`${classPrefix}-dot-active`]: currentIndex === index,
+          indicatorClassName,
         })}
       ></div>
     ));
-  }, [currentIndex, total]);
+  }, [currentIndex, indicatorClassName, total]);
 
   return <div className={classPrefix}>{dots}</div>;
 };

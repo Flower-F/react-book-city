@@ -3,9 +3,11 @@ import {
   Children,
   ReactElement,
   TouchEvent as ReactTouchEvent,
+  forwardRef,
   isValidElement,
   useCallback,
   useEffect,
+  useImperativeHandle,
   useMemo,
   useRef,
   useState,
@@ -26,9 +28,15 @@ export interface SwiperProps {
   style?: CSSProperties & Partial<Record<'--height' | '--width' | '--border-radius' | '--track-padding', string>>;
 }
 
+export interface SwiperRef {
+  slideTo: (index: number) => void;
+  slideNext: () => void;
+  slidePrev: () => void;
+}
+
 const classPrefix = 'ygm-swiper';
 
-export const Swiper = (props: SwiperProps) => {
+export const Swiper = forwardRef<SwiperRef, SwiperProps>((props, ref) => {
   const {
     loop,
     autoplay,
@@ -104,6 +112,10 @@ export const Swiper = (props: SwiperProps) => {
     },
     [count, getBoundIndex, loop],
   );
+
+  const slidePrev = useCallback(() => {
+    slideTo(currentIndex - 1);
+  }, [currentIndex, slideTo]);
 
   const slideNext = useCallback(() => {
     slideTo(currentIndex + 1);
@@ -197,6 +209,12 @@ export const Swiper = (props: SwiperProps) => {
     };
   }, [autoPlayInterval, autoplay, dragging, slideNext]);
 
+  useImperativeHandle(ref, () => ({
+    slideTo,
+    slideNext,
+    slidePrev,
+  }));
+
   if (count === 0 || !validateChildren) {
     console.warn('Swiper至少需要一个SwiperItem作为子组件');
     return null;
@@ -218,6 +236,6 @@ export const Swiper = (props: SwiperProps) => {
       ) : null}
     </div>
   );
-};
+});
 
 Swiper.displayName = 'Swiper';
