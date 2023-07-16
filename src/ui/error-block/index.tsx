@@ -25,3 +25,5 @@ export const ErrorBlock = (props: ErrorBlockProps) => {
     </div>
   );
 };
+
+ErrorBlock.displayName = 'ErrorBlock';

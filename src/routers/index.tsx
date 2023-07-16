@@ -1,7 +1,7 @@
 import { Navigate, createBrowserRouter } from 'react-router-dom';
 import { HomePage } from '../pages/home';
 import { ShelfPage } from '../pages/shelf';
-import { RankPage } from '../pages/rank';
+import { RankingPage } from '../pages/ranking';
 import { CategoryPage } from '../pages/category';
 import { SearchPage } from '../pages/search';
 import { BookListPage } from '../pages/bookList';
@@ -18,8 +18,8 @@ export const routerConfig = createBrowserRouter([
     element: <ShelfPage />,
   },
   {
-    path: '/rank',
-    element: <RankPage />,
+    path: '/ranking',
+    element: <RankingPage />,
   },
   {
     path: '/category',
