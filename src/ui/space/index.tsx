@@ -30,23 +30,24 @@ function formatGap(gap: number | string) {
 export const Space = (props: SpaceProps) => {
   const { children, wrap, justify, align, direction, block, gap, onClick } = props;
 
-  const style = useMemo(() => {
-    if (gap) {
-      if (Array.isArray(gap)) {
-        const [gapH, gapV] = gap;
+  const style: CSSProperties & Partial<Record<'--gap-vertical' | '--gap-horizontal' | '--gap', string>> =
+    useMemo(() => {
+      if (gap) {
+        if (Array.isArray(gap)) {
+          const [gapH, gapV] = gap;
+          return {
+            '--gap-vertical': formatGap(gapV),
+            '--gap-horizontal': formatGap(gapH),
+          };
+        }
+
         return {
-          '--gap-vertical': formatGap(gapV),
-          '--gap-horizontal': formatGap(gapH),
+          '--gap': formatGap(gap),
         };
       }
 
-      return {
-        '--gap': formatGap(gap),
-      };
-    }
-
-    return {};
-  }, [gap]);
+      return {};
+    }, [gap]);
 
   return (
     <div
@@ -58,7 +59,7 @@ export const Space = (props: SpaceProps) => {
         [`${classPrefix}-justify-${justify ?? 'start'}`]: !!justify,
       })}
       onClick={onClick}
-      style={style as CSSProperties}
+      style={style}
     >
       {Children.map(children, (child) => {
         return child !== null && child !== undefined && <div className={`${classPrefix}-item`}>{child}</div>;

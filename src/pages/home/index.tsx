@@ -7,8 +7,9 @@ import { HomeData } from './types';
 import { Swiper } from '../../ui/swiper';
 import { Space } from '../../ui/space';
 import { NavBar } from './components/navbar';
-import styles from './index.module.scss';
+import { Popular } from './components/popular';
 import { px2rem } from '../../utils/unit';
+import styles from './index.module.scss';
 
 export const HomePage = () => {
   const { data, error } = useRequest<HomeData>({ url: api.getHomeData });
@@ -34,6 +35,7 @@ export const HomePage = () => {
           ))}
         </Swiper>
         <NavBar />
+        <Popular />
       </Space>
     </div>
   );
